@@ -116,9 +116,9 @@ Le modèle extrait les données d'apres l'historique de la conversation entre l'
     Extract entities like full name, phone number, ID, date, or time from the conversation.
     """
 
-Modification de la base de donnees
-=============================
-Pour savoir comment doit--t-on agir sur la base de données on doit savoir l'intention de l'utilisateur;s'il veut bien prendre un rendez-vous,modifier la date d'un rendez-vous existant ou bien annuler son rendez-vous.
+Modification de la base de données
+==================================
+Pour savoir comment doit-t-on agir sur la base de données on doit savoir l'intention de l'utilisateur;s'il veut bien prendre un rendez-vous,modifier la date d'un rendez-vous existant ou bien annuler son rendez-vous.
 
 .. code-block:: python
 
