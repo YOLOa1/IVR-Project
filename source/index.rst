@@ -121,12 +121,14 @@ Modification de la base de données
 Pour savoir comment doit--t-on agir sur la base de données on doit savoir l'intention de l'utilisateur;s'il veut bien prendre un rendez-vous,modifier la date d'un rendez-vous existant ou bien annuler son rendez-vous.
 
 .. code-block:: python
+
    Intent=intent_recognition.invoke(History)
 
 
 Utiliser une variable `user` pour enregistrer les données de l'utilisateur obtenus par extraction a partir de l'historique de la conversation
 
 .. code-block:: python
+
    for data in User_Data:
       extracted_data=Info_extract.invoke(f"return the {data} from the following {History}")
       user[data]=extracted_data
