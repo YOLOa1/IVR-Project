@@ -12,14 +12,20 @@ Installation des bibliothèques
 
 Assurez-vous d'avoir accès à un serveur Ollama en cours d'exécution et correctement configuré.
 
-Ensuite, installez `langchain` et `langchain_ollama` pour connecter Ollama comme LLM :
+Ensuite, installez `langchain`  pour connecter Ollama comme LLM :
 
 .. code-block:: bash
 
-    pip install langchain langchain-ollama
+    pip install langchain_ollama 
 
 Configuration du LLM
 --------------------
+
+Pour ce projet on utilisera llama3.1, pour cela on doit l'importer sur notre machine en utilisant la commande:
+.. code-block:: bash
+
+    ollama pull lama3.1
+
 
 Le modèle génère des conversations avec l'utilisateur en se basant sur l'historique de la discussion. À chaque réponse, l'historique est enrichi pour permettre au système de proposer des solutions adaptées.
 
@@ -27,60 +33,34 @@ Le modèle détecte l'intention de l'utilisateur, comme fixer, modifier ou annul
 
 .. code-block:: python
 
-    from langchain_ollama import OllamaLLM
-    from langchain_core.prompts import ChatPromptTemplate
-    from db_manage import create_database, add_user, remove_user, edit_user
+   from langchain_ollama import OllamaLLM
+   from DataBase import *
 
-    template = """
-    The chat history is {context}
-    User: {question}
-    """
+   Info_extract=OllamaLLM(model="extract")
+   intent_recognition= OllamaLLM(model="intent")
+   model=OllamaLLM(model="test")
 
-    Info_extract = OllamaLLM(model="extract")
-    intent_recognition = OllamaLLM(model="intent")
-    model = OllamaLLM(model="test")
+   User_Data=["Full_name","ID","phone number","DATE","TIME"]
 
-    lista = ["Full_name", "ID", "phone number", "DATE", "TIME"]
-    user = {
-        "Full_name": "",
-        "ID": "",
-        "phone_number": "",
-        "DATE": "",
-        "TIME": ""
-    }
+   user={"Full_name":"",
+       "ID":"",
+       "phone_number":"",
+       "DATE":"",
+       "TIME":""
+   }
 
-    prompt = ChatPromptTemplate.from_template(template)
-    chain = prompt | model
+   History = ""
 
-    History = ""
-    context = ""
-    print("Hello there, I am your AI assistant for today.")
-    while True:
-        user_input = input("you: ")
-        if user_input.lower() in ["exit", "bye"]:
-            break
-        History += user_input + "\n"
-        result = chain.invoke({"context": context, "question": user_input})
-        print("Bot: ", result)
-        context += f"\nUser: {user_input}\nAI: {result}"
-
-    Intent = intent_recognition(History)
-
-    for data in lista:
-        extracted_data = Info_extract(f"Return the {data} from the following {History}")
-        print(data, "  -->  ", extracted_data)
-        user[data] = extracted_data
-
-    create_database()
-    print(f"User's Info: {user}\nUser's Intent: {Intent}\nUser's Chat History: {History}")
-
-    if Intent == "scheduling_appointment":
-        add_user(user["Full_name"], user["ID"], user["phone_number"], user["DATE"], user["TIME"])
-    elif Intent == "rescheduling_appointment":
-        edit_user(user["ID"], user["Full_name"], user["phone_number"], user["DATE"], user["TIME"])
-    elif Intent == "cancelling_appointment":
-        remove_user(user["ID"])
-
+   while True:
+      user_input = input("You: ")
+      if user_input.lower() in ["goodbye","exit", "bye"]:
+         print("Bot: Goodbye!")
+         break
+      History += f"User: {user_input}\n"
+      result = model.invoke(History)
+      print("Bot:", result)
+      History += f"AI: {result}\n"
+   
 Personnalisation du Serveur
 ---------------------------
 
@@ -107,6 +87,9 @@ Les instructions pour personnaliser le serveur sont structurées de manière à 
 Reconnaissance des Intentions
 =============================
 
+Cette variation du modele pour savoir coment agir sur la base de données.
+On etudie meme le cas d'un appel erroné dédié a un autre docteur ou autre cabine.
+
 .. code-block:: bash
 
     FROM llama3.1
@@ -122,7 +105,7 @@ Reconnaissance des Intentions
 Extraction des Données
 ======================
 
-Le modèle extrait les données de l'utilisateur pour les insérer dans une base de données.
+Le modèle extrait les données d'apres l'historique de la conversation entre l'assissatnt et le client pour les insérer dans une base de données.
 
 .. code-block:: bash
 
@@ -131,3 +114,36 @@ Le modèle extrait les données de l'utilisateur pour les insérer dans une base
     SYSTEM """
     Extract entities like full name, phone number, ID, date, or time from the conversation.
     """
+
+Modification de la base de données
+==================================
+Pour savoir comment doit--t-on agir sur la base de données on doit savoir l'intention de l'utilisateur;s'il veut bien prendre un rendez-vous,modifier la date d'un rendez-vous existant ou bien annuler son rendez-vous.
+
+.. code-block:: python
+   Intent=intent_recognition.invoke(History)
+
+Utiliser une variable `user` pour enregistrer les données de l'utilisateur obtenus par extraction a partir de l'historique de la conversation
+
+.. code-block:: python
+   for data in User_Data:
+      extracted_data=Info_extract.invoke(f"return the {data} from the following {History}")
+      user[data]=extracted_data
+Finalement les cas pour lesquels on va agir sur la base de données;
+
+.. code-block:: python
+   create_db()
+
+   if Intent == "scheduling_appointment":
+      add_user(user["Full_name"],
+             user["ID"],
+             user["phone_number"],
+             user["DATE"],
+             user["TIME"])
+   elif Intent == "rescheduling_appointment":
+      update_user(user["Full_name"],
+                user["ID"],
+                user["phone_number"],
+                user["DATE"],
+                user["TIME"],)
+   elif Intent == "cancelling_appointment":
+      delete_user(user["ID"])
