@@ -24,7 +24,7 @@ Configuration du LLM
 Pour ce projet on utilisera llama3.1, pour cela on doit l'importer sur notre machine en utilisant la commande:
 .. code-block:: bash
 
-    ollama pull lama3.1
+   ollama pull lama3.1
 
 
 Le modèle génère des conversations avec l'utilisateur en se basant sur l'historique de la discussion. À chaque réponse, l'historique est enrichi pour permettre au système de proposer des solutions adaptées.
@@ -122,13 +122,17 @@ Pour savoir comment doit--t-on agir sur la base de données on doit savoir l'int
 .. code-block:: python
    Intent=intent_recognition.invoke(History)
 
+
 Utiliser une variable `user` pour enregistrer les données de l'utilisateur obtenus par extraction a partir de l'historique de la conversation
 
 .. code-block:: python
    for data in User_Data:
       extracted_data=Info_extract.invoke(f"return the {data} from the following {History}")
       user[data]=extracted_data
+
+      
 Finalement les cas pour lesquels on va agir sur la base de données;
+
 
 .. code-block:: python
    create_db()
