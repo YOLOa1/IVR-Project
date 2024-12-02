@@ -22,9 +22,10 @@ Configuration du LLM
 --------------------
 
 Pour ce projet on utilisera llama3.1, pour cela on doit l'importer sur notre machine en utilisant la commande:
+
 .. code-block:: bash
 
-   ollama pull lama3.1
+    ollama pull llama3.1
 
 
 Le modèle génère des conversations avec l'utilisateur en se basant sur l'historique de la discussion. À chaque réponse, l'historique est enrichi pour permettre au système de proposer des solutions adaptées.
