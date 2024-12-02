@@ -136,6 +136,7 @@ Finalement les cas pour lesquels on va agir sur la base de données;
 
 
 .. code-block:: python
+
    create_db()
 
    if Intent == "scheduling_appointment":
