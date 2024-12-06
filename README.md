@@ -143,7 +143,5 @@ Your task is to extract only the entity requested by the user. The possible enti
 
 
 
-[visit the project documentation](https://example.com/docs](https://virtual-assistant.readthedocs.io/en/latest/).
-
-[Visit Google](https://www.google.com)
+For more informations , please [visit the project documentation](https://virtual-assistant.readthedocs.io/en/latest/).
 
