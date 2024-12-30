@@ -3,7 +3,7 @@ Equipe
 
 L'équipe se compose de 2 individus. Ils ont opéré sous l'encadrement de Mr Tawfik Masrour .
 
-L'Encadrant : 
+Encadrant : 
 ----------------
     - **Encadrant**: Masrour Tawfik |linkedin_Masrour|
 .. |linkedin_Masrour| image:: ../Images/LinkedIn_Logo.png
@@ -13,7 +13,7 @@ L'Encadrant :
 
 
 
-Les membres :
+Membres :
 --------------
 
     - **Membre 1**: NAJID Adam |linkedin_adam|
