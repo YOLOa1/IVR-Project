@@ -1,21 +1,17 @@
 Equipe
 ======================================
 
-L'équipe se compose de 2 individus. Ils ont opéré sous l'encadrement de Mr Tawfik Masrour et Badreddine Hannaoui.
+L'équipe se compose de 2 individus. Ils ont opéré sous l'encadrement de Mr Tawfik Masrour .
 
-Les encadrants : 
+L'Encadrant : 
 ----------------
-    - **Encadrant 1**: Masrour Tawfik |linkedin_Masrour|
-    - **Encadrant 2**: Hannaoui Badreddine |linkedin_Badr|
+    - **Encadrant**: Masrour Tawfik |linkedin_Masrour|
 .. |linkedin_Masrour| image:: ../Images/LinkedIn_Logo.png
     :width: 16
     :height: 16
     :target: https://www.linkedin.com/in/tawfik-masrour-43163b85/
 
-.. |linkedin_Badr| image:: ../Images/LinkedIn_Logo.png
-    :width: 16
-    :height: 16
-    :target: https://www.linkedin.com/in/badreddine-hannaoui/
+
 
 Les membres :
 --------------
