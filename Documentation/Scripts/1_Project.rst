@@ -12,6 +12,7 @@ Streamlit
 Streamlit est utilisé pour créer l'interface utilisateur de l'application. Il permet de développer une interface interactive facilement et rapidement.
 
 Exemple dans le code :
+
 .. code-block:: python
 
     st.title("Welcome to DR.Simo's Cabine")
@@ -24,6 +25,7 @@ LangChain avec OllamaLLM
 LangChain est une bibliothèque qui permet de créer et de gérer des modèles de langage avancés. OllamaLLM est utilisé ici pour la reconnaissance d'intentions et l'extraction d'informations depuis les commandes utilisateur.
 
 Utilisation dans le code dans le code :
+
 .. code-block:: python
 
     Info_extract = OllamaLLM(model="Info_extractor")
@@ -38,6 +40,7 @@ pyttsx3
 Pyttsx3 est une bibliothèque de synthèse vocale qui convertit les réponses textuelles de l'assistant en audio.
 
 Exemple dans le code :
+
 .. code-block:: python
 
     engine = pyttsx3.init()
@@ -53,6 +56,7 @@ SpeechRecognition
 Cette bibliothèque permet de convertir la parole en texte pour interpréter les commandes vocales de l'utilisateur.
 
 Exemple dans le code :
+
 .. code-block:: python
 
     with sr.Microphone() as source:
@@ -67,6 +71,7 @@ Base de données (DataBase.py)
 Cette bibliothèque gère les opérations de la base de données, comme l'ajout, la mise à jour ou la suppression de rendez-vous.
 
 Exemple dans le code :
+
 .. code-block:: python
 
     add_user(user["name"],
@@ -154,12 +159,13 @@ Dans ce projet, trois variantes du modèle LLaMA 3.1 sont utilisées, chacune ay
 Cette segmentation permet d'assurer une précision optimale et une gestion fluide des interactions utilisateur.
 
 Pour la création des différentes variations du modèle
+
 .. code-block:: bash
 
    ollama create Info_extractor -f "path/Extraction des données.txt"
    ollama create Intent_extractor -f "path/Reconnaissance des intentions.txt"
    ollama create Assistant -f "path/Interaction avec l'utilisateur.txt"
-   
+
 Fonctionnement de l'application
 ===============================
 1. L'utilisateur clique sur le bouton **Record Audio** dans l'interface Streamlit.
