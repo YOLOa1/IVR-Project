@@ -1,37 +1,19 @@
-# Textra Documentation
+# Virtual Assistant for Dr. Simo's Medical Office
 
-Welcome to the documentation repository for Textra tool. We combine OCR and LLM to extract text from images.
-with height accuracy and speed.
-## Getting Started with Documentation Development
+This project is a real-time virtual assistant designed to streamline appointment management for Dr. Simo's medical office. It allows patients to schedule, update, or cancel appointments using voice commands. The system leverages advanced technologies like speech recognition, natural language processing, and AI-driven intent recognition to provide a seamless user experience.
 
-If you're interested in contributing to the documentation, follow these steps to set up your development environment:
+## Key Features
+- **Voice Interaction:** Converts voice input to text and processes user requests efficiently.
+- **Natural Language Understanding:** Utilizes LLaMA 3.1 models for intent recognition and data extraction.
+- **Database Management:** Handles scheduling, updating, and canceling appointments directly in the database.
+- **User-Friendly Interface:** Built with Streamlit for an interactive and accessible web-based UI.
 
-### Prerequisites
+## Technologies Used
+- **Streamlit** for the web application interface.
+- **SpeechRecognition** for converting speech to text.
+- **Pyttsx3** for text-to-speech responses.
+- **LangChain with OllamaLLM** for handling intent recognition and data extraction.
+- **Custom Database Module** for managing appointment records.
 
-Make sure you have Python installed on your system.
-
-### Installation
-
-1. Clone the repository to your local machine:
-
-   ```bash
-   git clone https://github.com/MasrourTawfik/Textra.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd Textra
-   ```
-
-3. Install the required dependencies using pip:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-Now you're ready to start working on the documentation!
-
-## Accessing the Documentation Online
-
-The documentation is hosted on ReadTheDocs. You can access it online by following this [link](https://textra.readthedocs.io/fr/latest/).
+## Documentation
+For detailed information about the project's architecture, implementation, and usage, visit the [full documentation on Read the Docs](https://virtual-assistant.readthedocs.io/en/latest/index.html).
